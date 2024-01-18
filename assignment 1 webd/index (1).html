@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <title>Sporting Goods Company</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Ten Sports</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#products">Products</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <h2>Explore our Sporting Goods</h2>
+        <p>Find top-quality gear and equipment for your favorite sports.</p>
+        <img src="Support.png" alt="Sports Equipment">
+    </section>
+
+    <section id="products">
+        <h2>Featured Products</h2>
+        <table>
+            <tr>
+                <th>Product</th>
+                <th>Price</th>
+            </tr>
+            <tr>
+                <td>Football</td>
+                <td>$29.99</td>
+            </tr>
+            <tr>
+                <td>Basketball</td>
+                <td>$19.99</td>
+            </tr>
+        </table>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form action="submit_form.php" method="post">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Message:</label>
+            <textarea id="message" name="message" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+
+        <address>
+            <p>For inquiries, contact us at <a href="tel:+123456789">+1 (234) 567-89</a></p>
+            <p>Email: <a href="mailto:info@tensports.com">info@tensports.com</a></p>
+        </address>
+    </section>
+
+    
+    
+    <audio controls>
+        <source src="club.mp3" type="audio/mp3">
+        Your browser does not support the audio tag.
+    </audio>
+
+    <video controls>
+        <source src="./videos/gym.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <menu type="toolbar">
+        <li><a href="#home">Shop</a></li>
+        <li><a href="https://maps.app.goo.gl/hroFNbD79MLLg1MU6">Location</a></li>
+        <li><a href="#contact">Contact</a></li>
+    </menu>
+<details>
+    <summary>Summary of the Sporting Goods Company</summary>
+    <p>Ten Sports: Your ultimate destination for top-quality athletic gear and equipment, where passion meets performance in every sporting endeavor.</p>
+    </details>
+    <footer>
+        <p>&copy; 2024 Ten Sports. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
