@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Assignment 4</title>
+<style>
+  .error {
+    color: red;
+  }
+</style>
+</head>
+<body>
+
+<form id="myForm">
+  <label for="fname">First Name:</label><br>
+  <input type="text" id="fname" name="fname" minlength="2" maxlength="30" pattern="[a-zA-Z0-9\s]+" required><br>
+  <span id="fnameError" class="error"></span><br>
+
+  <label for="lname">Last Name:</label><br>
+  <input type="text" id="lname" name="lname" minlength="2" maxlength="30" pattern="[a-zA-Z0-9\s]+" required><br>
+  <span id="lnameError" class="error"></span><br>
+
+  <label for="phone">Phone Number:</label><br>
+  <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" required><br>
+  <span id="phoneError" class="error"></span><br>
+
+  <label for="email">Email:</label><br>
+  <input type="email" id="email" name="email" pattern="[a-z0-9._%+-]+@northeastern\.edu$" required><br>
+  <span id="emailError" class="error"></span><br>
+
+  <label for="street1">Street Address 1:</label><br>
+  <input type="text" id="street1" name="street1" minlength="2" maxlength="100" required><br>
+  <span id="street1Error" class="error"></span><br>
+
+  <label for="street2">Street Address 2:</label><br>
+  <input type="text" id="street2" name="street2" minlength="2" maxlength="100"><br><br>
+
+  <label for="zip">ZIP Code:</label><br>
+  <input type="text" id="zip" name="zip" pattern="[0-9]{5}" required><br>
+  <span id="zipError" class="error"></span><br>
+
+  <label for="country">Select Country:</label>
+  <select id="country" name="country">
+    <option value="USA">USA</option>
+    <option value="Canada">Canada</option>
+    <option value="UK">UK</option>
+    <option value="Australia">Australia</option>
+    <option value="India">India</option>
+  </select><br><br>
+
+  <div id="checkboxContainer"></div>
+  <br>
+
+  <input type="submit" value="Submit" id="submitButton" disabled>
+</form>
+
+<script>
+  const form = document.getElementById('myForm');
+  const submitButton = document.getElementById('submitButton');
+
+  form.addEventListener('input', function(e) {
+    validateFields();
+  });
+
+  function validateFields() {
+    const fname = document.getElementById('fname');
+    const lname = document.getElementById('lname');
+    const phone = document.getElementById('phone');
+    const email = document.getElementById('email');
+    const street1 = document.getElementById('street1');
+    const zip = document.getElementById('zip');
+
+    const fnameError = document.getElementById('fnameError');
+    const lnameError = document.getElementById('lnameError');
+    const phoneError = document.getElementById('phoneError');
+    const emailError = document.getElementById('emailError');
+    const street1Error = document.getElementById('street1Error');
+    const zipError = document.getElementById('zipError');
+
+    const fnameValid = fname.checkValidity();
+    const lnameValid = lname.checkValidity();
+    const phoneValid = phone.checkValidity();
+    const emailValid = email.checkValidity();
+    const street1Valid = street1.checkValidity();
+    const zipValid = zip.checkValidity();
+
+    
+    if (fnameValid && lnameValid && phoneValid && emailValid && street1Valid && zipValid) {
+      submitButton.disabled = false;
+    } else {
+      submitButton.disabled = true;
+    }
+
+    if (!fnameValid) {
+      fnameError.textContent = 'Please enter a valid first name.';
+    } else {
+      fnameError.textContent = '';
+    }
+
+    if (!lnameValid) {
+      lnameError.textContent = 'Please enter a valid last name.';
+    } else {
+      lnameError.textContent = '';
+    }
+
+    if (!phoneValid) {
+      phoneError.textContent = 'Please enter a valid phone number.';
+    } else {
+      phoneError.textContent = '';
+    }
+
+    if (!emailValid) {
+      emailError.textContent = 'Please enter a valid email address.';
+    } else {
+      emailError.textContent = '';
+    }
+
+    if (!street1Valid) {
+      street1Error.textContent = 'Please enter a valid street address.';
+    } else {
+      street1Error.textContent = '';
+    }
+
+    if (!zipValid) {
+      zipError.textContent = 'Please enter a valid ZIP code.';
+    } else {
+      zipError.textContent = '';
+    }
+  }
+
+  const countrySelect = document.getElementById('country');
+  const checkboxContainer = document.getElementById('checkboxContainer');
+
+  countrySelect.addEventListener('change', function() {
+    const selectedCountry = countrySelect.value;
+    let checkboxHTML = '';
+
+    if (selectedCountry === 'USA') {
+      checkboxHTML = '<input type="checkbox" id="checkbox"> Citizen of USA<br>';
+    }
+    else if (selectedCountry === 'Canada') {
+        checkboxHTML = '<input type="checkbox" id="checkbox"> Citizen of Canada<br>';
+      }
+      else if (selectedCountry === 'UK') {
+        checkboxHTML = '<input type="checkbox" id="checkbox"> Citizen of UK<br>';
+      }
+      else if (selectedCountry === 'India') {
+        checkboxHTML = '<input type="checkbox" id="checkbox"> Citizen of India<br>';
+      }  
+      else if (selectedCountry === 'Australia') {
+        checkboxHTML = '<input type="checkbox" id="checkbox"> Citizen of Australia<br>';
+      }
+
+    checkboxContainer.innerHTML = checkboxHTML;
+  });
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const table = document.createElement('table');
+    const tbody = document.createElement('tbody');
+
+    for (const pair of formData.entries()) {
+      const tr = document.createElement('tr');
+      const td1 = document.createElement('td');
+      const td2 = document.createElement('td');
+
+      td1.textContent = pair[0];
+      td2.textContent = pair[1];
+
+      tr.appendChild(td1);
+      tr.appendChild(td2);
+
+      tbody.appendChild(tr);
+    }
+
+    table.appendChild(tbody);
+    document.body.appendChild(table);
+
+    form.reset();
+    submitButton.disabled = true;
+  });
+</script>
+
+</body>
+</html>
