@@ -1,0 +1,20 @@
+@import "config";
+.skills {
+  display: flex;
+  margin-top: 50px;
+}
+.skillsImageCard img {
+  
+  width: 400px;
+  height: 400px;
+  align-items: center;
+} 
+.skillsLangCard {
+  width: 60%;
+}
+.skillsLangCard img {
+  float: right;
+  width: 100px;
+  height: 100px;
+  margin: 20px;
+}
