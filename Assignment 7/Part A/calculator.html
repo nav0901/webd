@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Assignment 7</title>
+  <style>
+    #container {
+      width: 1000px;
+      margin: auto;
+      background-color: lightblue;
+    }
+    main {
+      padding: 50px;
+    }
+    .button {
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      background-color: white;
+      color: black;
+      border: 2px solid #555555;
+    }
+    .button:hover {
+      background-color: #555555;
+      color: white;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 3px solid #ccc;
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+      outline: none;
+    }
+    input[type="text"]:focus {
+      border: 3px solid #555;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <main>
+      
+      <p id="usr" class="username"></p>
+      <fieldset>
+        <legend>Basic Calculator</legend>
+        <br />
+        <form id="calcForm">
+          <p>
+            <label for="number1">Number 1:</label>
+            <input
+              type="text"
+              id="number1"
+              name="number1"
+              placeholder="Enter a number"
+            />
+            <p id="error_number1" class="error1"></p>
+          </p>
+          <p>
+            <label for="number2">Number 2:</label>
+            <input
+              type="text"
+              name="number2"
+              id="number2"
+              placeholder="Enter a number"
+            />
+            <p id="error_number2" class="error2"></p>
+          </p>
+          <input
+            type="button"
+            id="btnADD"
+            class="button"
+            value="Add"
+          />
+          <input
+            type="button"
+            id="btnSUB"
+            class="button"
+            value="Subtract"
+          />
+          <input
+            type="button"
+            id="btnMUL"
+            class="button"
+            value="Multiply"
+          />
+          <input
+            type="button"
+            id="btnDIV"
+            class="button"
+            value="Divide"
+          />
+          <br /><br />
+          <label for="Result">Result:</label>
+          <div id="result" class="result"></div>
+        </form>
+      </fieldset>
+    </main>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    
+
+    $(document).ready(function () {
+
+        function getURLParameter(name) {
+    var urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
+  var username = getURLParameter("username");
+  $(".username").html("Welcome " + username + " please enter the numbers below and perform any operation");
+
+      
+      const performOperation = (operation) => {
+       
+        $(".result").html("");
+        $(".error1").html("");
+        $(".error2").html("");
+        
+
+        // Get the input values
+        const num1 = parseFloat($("#number1").val());
+        const num2 = parseFloat($("#number2").val());
+
+        // Check for valid input and perform the operation
+        if (isNaN(num1) || !isFinite(num1)) {
+        $(".error1").html("Please enter a valid number");
+      }
+
+      if (isNaN(num2) || !isFinite(num2)) {
+        $(".error2").html("Please enter a valid number");
+      }
+
+      if (operation === "Add") {
+        if (isFinite(num1) && isFinite(num2)) {
+          const result = num1 + num2;
+          $(".result").html(result.toFixed(2));
+        }
+      } else if (operation === "Subtract") {
+        if (isFinite(num1) && isFinite(num2)) {
+          const result = num1 - num2;
+          $(".result").html(result.toFixed(2));
+        }
+      } else if (operation === "Multiply") {
+        if (isFinite(num1) && isFinite(num2)) {
+          const result = num1 * num2;
+          $(".result").html(result.toFixed(2));
+        }
+      } else if (operation === "Divide") {
+        if (isFinite(num1) && isFinite(num2)) {
+          if (num2 === 0) {
+            $(".error2").html("Division by zero is not possible");
+          } else {
+            const result = num1 / num2;
+            $(".result").html(result.toFixed(2));
+          }
+        }
+      }
+    };
+
+    // Attach click event handlers to the buttons
+    $("#btnADD").click(() => performOperation("Add"));
+    $("#btnSUB").click(() => performOperation("Subtract"));
+    $("#btnMUL").click(() => performOperation("Multiply"));
+    $("#btnDIV").click(() => performOperation("Divide"));
+  });
+  </script>
+</body>
+</html>

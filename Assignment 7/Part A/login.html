@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Login Page</title>
+  <style>
+    .error {
+      color: red;
+    }
+    
+    #container {
+      width: 1000px;
+      margin: auto;
+      background-color: #FFB52E;
+    }
+    main {
+      padding: 50px;
+    }
+    .button {
+      padding: 16px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      margin: 4px 2px;
+      transition-duration: 0.4s;
+      cursor: pointer;
+      background-color: white;
+      color: black;
+      border: 2px solid #555555;
+    }
+    .button:hover {
+      background-color: #555555;
+      color: white;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 12px 20px;
+      margin: 8px 0;
+      box-sizing: border-box;
+      border: 3px solid #ccc;
+      -webkit-transition: 0.5s;
+      transition: 0.5s;
+      outline: none;
+    }
+    input[type="text"]:focus {
+      border: 3px solid #555;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <main>
+      <h2>Login Page</h2>
+      <form id="loginForm">
+        <p>
+          <label for="email">Email:</label>
+          <input type="text" id="email" name="email" />
+          <p class="error" id="error_email"></p>
+        </p>
+        <p>
+          <label for="username">User Name:</label>
+          <input type="text" id="username" name="username" />
+          <p class="error" id="error_username"></p>
+        </p>
+        <p>
+          <label for="password">Password:</label>
+          <input type="password" id="password" name="password" />
+          <p class="error" id="error_password"></p>
+        </p>
+        <p>
+          <label for="confirmPassword">Confirm Password:</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" />
+          <p class="error" id="error_confirmPassword"></p>
+        </p>
+        <button type="button" id="loginButton" disabled>Login</button>
+      </form>
+    </main>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+    $(document).ready(function () {
+  // Initialize the form fields
+  const emailField = $("#email");
+  const usernameField = $("#username");
+  const passwordField = $("#password");
+  const confirmPasswordField = $("#confirmPassword");
+  const loginButton = $("#loginButton");
+
+  // Initialize error messages
+  const errorEmail = $("#error_email");
+  const errorUsername = $("#error_username");
+  const errorPassword = $("#error_password");
+  const errorConfirmPassword = $("#error_confirmPassword");
+
+  // Function to enable or disable the Login button based on validation status
+  function updateLoginButton() {
+    if (
+    errorEmail.text() === "" &&
+    errorUsername.text() === "" &&
+    errorPassword.text() === "" &&
+    errorConfirmPassword.text() === "" &&
+    emailField.val() !== "" &&
+    usernameField.val() !== "" &&
+    passwordField.val() !== "" &&
+    confirmPasswordField.val() !== ""
+  ) {
+    loginButton.prop("disabled", false);
+  } else {
+    loginButton.prop("disabled", true);
+  }
+
+  }
+
+  // Email validation (northeastern e-mail id)
+  emailField.on("input", function () {
+    const email = emailField.val();
+    if (/^[a-zA-Z0-9._-]+@northeastern\.edu$/.test(email)) {
+      errorEmail.text("");
+    } else {
+      errorEmail.text("Please enter a valid northeastern e-mail address");
+    }
+    updateLoginButton();
+  });
+
+  // User Name validation (minimum 4 and maximum 20 characters)
+  usernameField.on("input", function () {
+    const username = usernameField.val();
+    if (username.length < 4 || username.length > 20) {
+      errorUsername.text("User Name must be 4 to 20 characters long");
+    } 
+    else if (!/^[a-zA-Z0-9]*$/.test(username)) {
+      errorUsername.text("Special characters are not allowed");
+    }
+    else {
+      errorUsername.text("");
+    }
+    updateLoginButton();
+  });
+
+  // Password validation (minimum 6 and maximum 20 characters)
+  passwordField.on("input", function () {
+    const password = passwordField.val();
+    if (password.length < 6 || password.length > 20) {
+      errorPassword.text("Password must be 6 to 20 characters long");
+    } else {
+      errorPassword.text("");
+    }
+    updateLoginButton();
+  });
+
+  // Confirm Password validation (must match the password)
+  confirmPasswordField.on("input", function () {
+    const confirmPassword = confirmPasswordField.val();
+    const password = passwordField.val();
+    if (confirmPassword !== password) {
+      errorConfirmPassword.text("Passwords do not match");
+    } else {
+      errorConfirmPassword.text("");
+    }
+    updateLoginButton();
+  });
+
+  // Handle the login button click event (for demonstration purposes, it redirects to a placeholder page)
+  loginButton.click(function () {
+    var username = usernameField.val();
+    window.location.href = "calculator.html?username=" + encodeURIComponent(username);
+  });
+});
+  </script>
+</body>
+</html>
