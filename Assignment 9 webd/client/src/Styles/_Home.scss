@@ -1,0 +1,52 @@
+@use "../Styles/" as *;
+
+.Home {
+  background-color: $prime-black;
+  padding-top: 5em;
+  padding-left: 3em;
+  padding-bottom: 8em;
+  .mainTitle {
+    color: white;
+    font-weight: $bold;
+    font-size: 4em;
+  }
+  .caption {
+    @include text($dark-text);
+    width: 40%;
+    margin-top: 2em;
+  }
+
+  button {
+    @include button;
+    margin-top: 1em;
+  }
+
+  .Work {
+    margin-top: 2em;
+    .sec {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      margin-top: 5em;
+    }
+    img {
+      width: 25em;
+      margin-left: 4em;
+    }
+  }
+  .content {
+    padding-left: 3em;
+    padding-top: 2em;
+    h1 {
+      @include subtitle(white);
+    }
+    p {
+      @include text($dark-text);
+      width: 70%;
+      margin-top: 2em;
+    }
+    button {
+      @include button;
+      margin-top: 3em;
+    }
+  }
+}

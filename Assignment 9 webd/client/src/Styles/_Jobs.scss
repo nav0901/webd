@@ -1,0 +1,7 @@
+@use '../Styles' as *;
+
+.Jobs{
+    .secTitle{
+       @include sectionTitle;
+    }
+}

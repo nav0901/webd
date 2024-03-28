@@ -1,0 +1,35 @@
+@use '../../Styles' as *;
+
+.Cards{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.JobCard{
+    width: 70%;
+    height: 18em;
+    background-color: $card-bg;
+    margin-bottom: 3em;
+    margin-left: auto;
+    margin-right: auto;
+    .content{
+        padding: 3em 2.2em;
+        padding-bottom: 1.5em;
+        h1{
+            font-size: 1.5em;
+            font-weight: $bold;
+        }
+        h2{
+            font-size: 1.1em;
+            font-weight: $demi-bold;
+            margin-top: 0.3em;
+        }
+        button{
+            @include button;
+            margin-top: 5em;
+        }
+    }
+}

@@ -1,0 +1,48 @@
+@use '../../Styles' as *;
+
+.NavMenu{
+    background-color: $prime-black;
+    padding: 2em 3em;
+    position: relative;
+    .Bar{
+        display: flex;
+        justify-content: space-between;
+        .logo{
+            width: 3em;
+            object-fit: contain;
+        }
+        .ham{
+            width: 2em;
+            object-fit: contain;
+            cursor: pointer;
+            z-index: 101;
+        }
+    }
+
+    .Menu{
+        width: 100%;
+        height: 100vh;
+        left: 0;
+        top: 0;
+        background-color: $primary;
+        position: absolute;
+        z-index: 100;
+        padding: 6em 4em;
+        transform: translateX(100%);
+        transition: all 0.8s;
+        a{
+            text-decoration: none;
+            color: white;
+            h1{
+                font-family: Roboto, sans-serif;
+                font-weight: 900;
+                font-size: 2em;
+                margin-bottom: 1.2em;
+            }
+        }
+    }
+    .active{
+        transform: translateX(70%);
+        transition: all 0.8s;
+    }
+}

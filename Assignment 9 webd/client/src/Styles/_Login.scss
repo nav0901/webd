@@ -1,0 +1,41 @@
+@use "../Styles" as *;
+
+.Login {
+  width: 100%;
+  overflow-y: hidden;
+  z-index: 120;
+  top: 0;
+  position: absolute;
+  .FormSection {
+    background-color: $prime-black;
+    height: 100vh;
+    padding: 10em 6em;
+    text-align: center;
+    form {
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+    }
+
+    h1 {
+      @include titles;
+    }
+    form {
+      margin-top: 3em;
+      width: fit-content;
+    }
+
+    .typeA {
+      @include input($inputA, $placeholder, white);
+    }
+
+    input[type="submit"] {
+      @include button;
+      margin-left: auto;
+      margin-right: auto;
+      display: block;
+      margin-top: 1em;
+      padding: 1em 2.9em;
+    }
+  }
+}

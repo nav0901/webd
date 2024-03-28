@@ -1,0 +1,15 @@
+@use '../../Styles' as *;
+
+.Header{
+    padding: 3em 5em;
+    padding-bottom: 7em;
+    background-color: $prime-black;
+    text-align: center;
+    .main{
+        @include titles;
+        font-size: 4em;
+        margin-top: 0.6em;
+    }
+}
+
+  

@@ -1,0 +1,15 @@
+@use "../Styles" as *;
+
+.About {
+  padding-bottom: 5em;
+  .para {
+    @include text($light-text);
+    width: 85%;
+    margin-left: 3.7em;
+  }
+  .image1 {
+    height: 20%;
+    width: 50%;
+    margin-left: 375px;
+  }
+}
