@@ -1,0 +1,54 @@
+#weatherCard {
+  color: #ecd7d0; /* Light beige text */
+  background-color: #d79c80; /* Peachy background */
+  border: 1px solid black; /* Dark red border */
+  border-radius: 10px;
+  display: inline-block;
+  margin: 10px;
+  padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out,
+    z-index 0.1s linear;
+  position: relative;
+  z-index: 1;
+}
+
+#weatherCard:hover {
+  background-color: #a6cf98; /* Teal blue on hover */
+  transform: scale(1.1);
+  z-index: 2;
+}
+
+.col {
+  color: black; /* Dark red for text */
+  position: relative;
+  z-index: 3;
+}
+
+#icon {
+  width: 80px;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.3s ease-in-out, z-index 0.1s linear;
+  position: relative;
+  z-index: 1;
+}
+
+#weatherCard:hover #icon {
+  transform: scale(1.2);
+  z-index: 2;
+}
+
+.time {
+  font-weight: 600;
+  font-size: 1.2em;
+  margin-top: 10px;
+  transition: color 0.3s ease-in-out, z-index 0.1s linear;
+  position: relative;
+  z-index: 1;
+}
+
+#weatherCard:hover .time {
+  color: #ecd7d0; /* Light beige text on hover */
+  z-index: 2;
+}
